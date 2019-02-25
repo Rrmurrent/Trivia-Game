@@ -1,0 +1,109 @@
+
+.answerButton{
+    float: right;
+    width: 85%;
+    margin: 20px;
+    position: relative;
+    right: 20px;
+}
+
+.clearfix::after{
+    content: "";
+    clear:both;
+    display: table;
+}
+.header{
+    text-align: center;
+    font-size: 80px;
+    font-family: fantasy;
+    
+}
+
+#mainDiv{
+    background-color:blue;
+    font-size: 20px;
+    position:relative;
+    top: center;
+    min-height: 800px;
+    display: table;
+    padding: 0px;
+    text-align: center;
+    /* border: solid,10px, black; */
+}
+
+#questDiv{
+    background-color: #222222;
+    display: flex;
+    float: left;
+    width: 40%;
+    padding: 20px;
+}
+
+#ansDiv{
+    background-color: #222222;
+    display: table;
+    height: 100%;
+    width: 60%;
+    position:relative;
+}
+
+#infoText{
+    display: relative;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#startButton, #letsGoButton{
+    height: 75px;
+    position: relative;
+    top: 35px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+#reloadButton{
+    position: static;
+}
+
+#scoreDiv{
+    font-size: 25px;
+    padding: 15px;
+}
+
+#pic{
+    margin: auto;
+}
+
+@media screen and (max-width: 667px){
+    #mainDiv{
+        height: 600px;
+        margin-left: 0px;
+        margin-right: 0px;
+        display: table;
+        margin-bottom: 75px;
+        margin-top: -40px;
+    }
+    #questDiv{
+        width: 75%;
+        height: auto;
+        display: block;
+    }
+    #scoreDiv{
+        break-before: always;
+        display: block;
+    }
+    #pic{
+        position: static;
+        width:50%;
+        height: auto;
+
+    }
+    #ansDiv{
+        width: 100%;
+        position: static;
+
+    }
+   
