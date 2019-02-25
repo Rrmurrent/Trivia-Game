@@ -1,80 +1,116 @@
 var score = 0;
 var time = 90;
-i = 0;
-var points;
+var points= 0;
 
-var imageArray = ["assets/images/mulan.jpg", "assets/images/lionKing.jpg", "assets/images/lilo.png", "assets/images/frozen.jpg", "assets/images/up.jpg", "assets/images/bambi.png", "assets/images/aristoCats.png", "assets/images/winnie/jpg","assets/images/brave.jpg","assets/images/beauty.jpg"];
+
 
 var mainDiv= $('#mainDiv');
 
 var question = [{
     quote: 'The flower that blooms in adversity is the most rare and beautiful of them all',
     choices: ["Alladin","Beauty and the Beast","Cinderella","Mulan"],
-    validAnswer: choices [3],
-    imageArray=[0]
+    validAnswer: "Mulan",
+    imgSrc: "assets/images/mulan.jpg"
+    
 },
-
+{
+    quote: 'Love is putting someone else’s needs before yours.',
+    choices:["Toy Story", "Treasure Planet", "Tarzan", "Frozen"],
+    validAnswer: "Frozen",
+    imgSrc: "assets/images/frozen.jpg"
+},
 {
     quote:  'I was hiding under your porch because I love you',
     choices:["Finding Nemo","Snow White","UP", "Alladin"],
-    validAnswer: choices[2],
-    imageArray = [4]
+    validAnswer:"UP",
+    imgSrc:"assets/images/up.jpg"
 
 },
 
 {
-    quote:  'f you can’t say something nice, don’t say nothin’ at all.',
+    quote:  'If you can’t say something nice, don’t say nothin’ at all.',
     choices:["Bambi","Sleeping Beauty","Alice in Wonderland", "The Jungle Book"],
-    validAnswer: choices[0],
-    imageArray = [5]
+    validAnswer:"Bambi",
+    imgSrc:"assets/images/bambi.png"
 },
 
 {
     quote:  'Ohana means family, and family means no one gets left behind or forgotten.',
     choices:["Moana","Mary Poppins","Peter Pan", "Lilo & Stitch"],
-    validAnswer: choices[3],
-    imageArray = [2]
+    validAnswer: "Lilo & Stitch",
+    imgSrc:"assets/images/lilo.png"
 },
 
 {
     quote:  'The past can hurt. But the way I see it, you can either run from it, or learn from it.',
     choices:["Lady and The Tramp","Beauty and the Beast","The Lion King", "Cinderella"],
-    validAnswer: choices[2],
-    imageArray = [1]
+    validAnswer: "The Lion King",
+    imgSrc: "assets/images/lionKing.jpg"
 },
 
 {
     quote:  'Ladies do not start fights, but they can finish them.',
-    choices:["Snow White","Alladin","The Aristo Cats", "Mulan"],
-    validAnswer: choices[2],
-    imageArray = [6]
+    choices:["Snow White","Alladin","The Aristocats", "Mulan"],
+    validAnswer: "The Aristocats",
+    imgSrc:"assets/images/aristoCats.png"
 },
 
 {
     quote:  'You’re braver than you believe, and stronger than you seem, and smarter than you think.',
     choices:["Pinocchio","Toy Story","Finding Nemo", "Winnie the Pooh"],
-    validAnswer: choices[3],
-    imageArray = [7]
+    validAnswer: "Winnie the Pooh",
+    imgSrc:"assets/images/winnie/jpg"
 },
 
 {
     quote:  'Our fate lives within us. You only have to be brave enough to see it.',
     choices:["Sleeping Beauty","Beauty and the Beast","Brave", "UP"],
-    validAnswer: choices[2],
-    imageArray = [8]
+    validAnswer: "Brave",
+    imgSrc: "assets/images/brave.jpg"
+    
+    
 },
 
 {
     quote:  'She warned him not to be deceived by appearances, for beauty is found within.',
     choices:["Mary Poppins","Beauty and the Beast","Finding Nemo", "Anastasia"],
-    validAnswer: choices[1],
-    imageArray = [9]
+    validAnswer: "Beauty and the Beast",
+    imgSrc: "assets/images/beauty.jpg"
+    
 },
 
 
 ];
 
+
+
+//Making variable for question.length to use in for loops
 var qlength =  question.length;
+var display = function (i) {
+    mainDiv.empty();
+    var q = question[i]
+    var qDiv = $('<div></div>')
+    var qQuote = $('<h2>' + q.quote + '</h2>')
+    var a1 = $('<button class = "btn btn-lg btn-danger mx-1">'+ q.choices[0] +'</button>')
+    var a2 = $('<button class = "btn btn-lg btn-danger mx-1">'+ q.choices[1] +'</button>')
+    var a3 = $('<button class = "btn btn-lg btn-danger mx-1">'+ q.choices[2] +'</button>')
+    var a4 = $('<button class = "btn btn-lg btn-danger mx-1">'+ q.choices[3] +'</button>')
+    $(qQuote).appendTo (qDiv);
+    $(a1).appendTo (qDiv);
+    $(a2).appendTo (qDiv);
+    $(a3).appendTo (qDiv);
+    $(a4).appendTo (qDiv);
+    $(qDiv).appendTo(mainDiv);    
+
+    console.log(q.quote);
+
+}
+for (var i = 0; i < qlength; i++) {
+    display(i);
+}
+
+
+
 
     //Instructions
 var instruct = function(){
