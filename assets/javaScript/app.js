@@ -135,7 +135,10 @@ $(document).on('click', '.ansBtn', function(event) {
         alert('Boo!! You suck.')
         i++
         time = 10
+        $("#scoreDiv").empty();
+        $("#scoreDiv").append(score);
         if (i === qlength){
+         
          endAlert();
         }
         else {
@@ -144,8 +147,22 @@ $(document).on('click', '.ansBtn', function(event) {
         
     }
 });
+
+// End alert
 var endAlert =() =>{
-    alert('fuck yeah');
+    i++
+    
+    alert('!!You finished!!');
+    alert("Your total score is"  + ' ' + score + "out of a possible 10");
+        if (score === 10) {
+            alert("You really know your Disney movies!!");
+        } 
+        else {
+            alert("Better grab some popcorn and study up!");
+        }            
+    
+        
+    
 }
 
 
@@ -176,5 +193,12 @@ var timer = () =>{
         $('#timerDiv').append(time);
         console.log(time);
     },1000)
+    // if (timer <= 0) {
+    //     alert("Times up! Move on to the next questions")
+    //      $('#timerDiv').empty();
+    //      $('#timerDiv').append(time);
+    //      display();
+         
 }
 timer();
+
