@@ -5,6 +5,7 @@ var i = 0;
 
 // Div where everything is displayed
 var mainDiv= $('#mainDiv');
+
 // making object
 var question = [{
     quote: '"The flower that blooms in adversity is the most rare and beautiful of them all"',
@@ -88,6 +89,7 @@ var qlength =  question.length;
 var display = function () {
 //    empties the main div, to be filled with button and question content.
     mainDiv.empty(); 
+    
 // stats contains the timer and the score
     var stats = $('<div><h3>timer:<div id = "timerDiv">'+ time +'</div>score:<div id = "scoreDiv">'+ score +'</div></h3></div>')
 // variable for questions
@@ -125,7 +127,7 @@ $(document).on('click', '.ansBtn', function(event) {
 // console logging to see user answer and actual answer. Making sure they match.
     console.log (userAns);
     console.log(actualAns);
-    
+
 // timer variable created
     var timer = () =>{
         setInterval(() =>{
@@ -143,6 +145,7 @@ $(document).on('click', '.ansBtn', function(event) {
         i++
         score++
         time = 10 
+        
     
         $("#scoreDiv").empty();
         $("#scoreDiv").append(score);
@@ -162,17 +165,17 @@ $(document).on('click', '.ansBtn', function(event) {
         time = 10
         $("#scoreDiv").empty();
         $("#scoreDiv").append(score);
-        
+        timer();
     
         if (i === qlength){
          
          endAlert();
-        //  timer();
+         timer();
          
         }
         else {
             display();
-            // timer();
+        timer();
         }
         
     }
@@ -207,6 +210,7 @@ var instruct = function(){
         $(instructions).attr('id','infoText');
         $(instructions).append("Show off how well you know your disney quotes! Each questions has one correct answer. Chose wisely and beat the clock.");
         $(instructions).appendTo('#mainDiv');
+        
 
     var startButton = document.createElement('button');
         $(startButton).html('Begin the Game!');
@@ -217,13 +221,3 @@ var instruct = function(){
 };
 
 console.log ("hello");
-
-// // timer
-// var timer = () =>{
-//     setInterval(() =>{
-//         time--;
-        
-//         })
-//         timer();
-//     };
-    
