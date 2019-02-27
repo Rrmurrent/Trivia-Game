@@ -3,9 +3,9 @@ var time = 10;
 var points= 0;
 var i = 0;
 
-
+// Div where everything is displayed
 var mainDiv= $('#mainDiv');
-
+// making my object
 var question = [{
     quote: '"The flower that blooms in adversity is the most rare and beautiful of them all"',
     choices: ["Alladin","Beauty and the Beast","Cinderella","Mulan"],
@@ -86,9 +86,11 @@ var question = [{
 
 //Making variable for question.length to use in for loops
 var qlength =  question.length;
+// displays the questions and the button answers in the main div
 var display = function () {
    
     mainDiv.empty(); 
+    // stats contains the timer and the score
     var stats = $('<div><h3>timer:<div id = "timerDiv">'+ time +'</div>score:<div id = "scoreDiv">'+ score +'</div></h3></div>')
     var q = question[i]
     var qDiv = $('<div></div>')
@@ -97,15 +99,18 @@ var display = function () {
     var a2 = $('<button class = "ansBtn btn btn-lg btn-danger mx-1" value = "' + q.choices[1] + '">'+ q.choices[1] +'</button>')
     var a3 = $('<button class = "ansBtn btn btn-lg btn-danger mx-1" value = "' + q.choices[2] + '">'+ q.choices[2] +'</button>')
     var a4 = $('<button class = "ansBtn btn btn-lg btn-danger mx-1" value = "' + q.choices[3] + '">'+ q.choices[3] +'</button>')
-
+// appending time and scoreboard to q.div
     $(stats).appendTo(qDiv);
+    // appending quotes to qdiv
     $(qQuote).appendTo(qDiv);
+    // appending answer option 1-4
     $(a1).appendTo(qDiv);
     $(a2).appendTo(qDiv);
     $(a3).appendTo(qDiv);
     $(a4).appendTo(qDiv);
+    // appending qDiv containing all of the above to the mainDiv
     $(qDiv).appendTo(mainDiv);    
-
+// checking if quotes work
     console.log(q.quote);
 
 };
@@ -116,13 +121,15 @@ $(document).on('click', '.ansBtn', function(event) {
     event.preventDefault();
     var userAns = this.value;
     var actualAns = question[i].validAnswer;
+    
     console.log (userAns);
     console.log(actualAns);
     if(userAns === actualAns){
         alert('Good Job, keep it up!')
         i++
         score++
-        time = 10
+        time = 10 
+    
         $("#scoreDiv").empty();
         $("#scoreDiv").append(score);
         if (i === qlength){
@@ -131,18 +138,27 @@ $(document).on('click', '.ansBtn', function(event) {
         else {
             display()
         }
-    } else{
+
+    }
+    
+    else{
+
         alert('Boo!! You suck.')
         i++
         time = 10
         $("#scoreDiv").empty();
         $("#scoreDiv").append(score);
+    
         if (i === qlength){
          
          endAlert();
+         timer();
+         
+        //  empty('#scoreDiv');
         }
         else {
             display();
+            timer();
         }
         
     }
@@ -156,16 +172,18 @@ var endAlert =() =>{
     alert("Your total score is"  + ' ' + score + "out of a possible 10");
         if (score === 10) {
             alert("You really know your Disney movies!!");
+            $("#scoreDiv").empty();
+            $('#timerDiv').empty();
         } 
         else {
             alert("Better grab some popcorn and study up!");
+            $("#scoreDiv").empty();
+            $('#timerDiv').empty();
+            
+
         }            
-    
-        
-    
+
 }
-
-
 
     //Instructions
 var instruct = function(){
@@ -186,19 +204,12 @@ var instruct = function(){
 
 console.log ("hello");
 
-var timer = () =>{
-    setInterval(() =>{
-        time--;
-        $('#timerDiv').empty();
-        $('#timerDiv').append(time);
-        console.log(time);
-    },1000)
-    // if (timer <= 0) {
-    //     alert("Times up! Move on to the next questions")
-    //      $('#timerDiv').empty();
-    //      $('#timerDiv').append(time);
-    //      display();
-         
-}
-timer();
-
+// // timer
+// var timer = () =>{
+//     setInterval(() =>{
+//         time--;
+        
+//         })
+//         timer();
+//     };
+    
