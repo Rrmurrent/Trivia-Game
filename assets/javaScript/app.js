@@ -5,7 +5,7 @@ var i = 0;
 
 // Div where everything is displayed
 var mainDiv= $('#mainDiv');
-// making my object
+// making object
 var question = [{
     quote: '"The flower that blooms in adversity is the most rare and beautiful of them all"',
     choices: ["Alladin","Beauty and the Beast","Cinderella","Mulan"],
@@ -82,18 +82,19 @@ var question = [{
 
 ];
 
-
-
 //Making variable for question.length to use in for loops
 var qlength =  question.length;
 // displays the questions and the button answers in the main div
 var display = function () {
-   
+//    empties the main div, to be filled with button and question content.
     mainDiv.empty(); 
-    // stats contains the timer and the score
+// stats contains the timer and the score
     var stats = $('<div><h3>timer:<div id = "timerDiv">'+ time +'</div>score:<div id = "scoreDiv">'+ score +'</div></h3></div>')
+// variable for questions
     var q = question[i]
+// Created div to put the questions and answer options in
     var qDiv = $('<div></div>')
+// Created location for the quotes and answers to go
     var qQuote = $('<h2>' + q.quote + '</h2>')
     var a1 = $('<button class = "ansBtn btn btn-lg btn-danger mx-1" value = "' + q.choices[0] + '">'+ q.choices[0] +'</button>')
     var a2 = $('<button class = "ansBtn btn btn-lg btn-danger mx-1" value = "' + q.choices[1] + '">'+ q.choices[1] +'</button>')
@@ -121,9 +122,22 @@ $(document).on('click', '.ansBtn', function(event) {
     event.preventDefault();
     var userAns = this.value;
     var actualAns = question[i].validAnswer;
-    
+// console logging to see user answer and actual answer. Making sure they match.
     console.log (userAns);
     console.log(actualAns);
+    
+// timer variable created
+    var timer = () =>{
+        setInterval(() =>{
+            time--;
+            $('#timerDiv').empty();
+            $('#timerDiv').append(time);
+            console.log(time);
+        },1000)
+    }
+    timer();
+
+// conditional statement
     if(userAns === actualAns){
         alert('Good Job, keep it up!')
         i++
@@ -148,17 +162,17 @@ $(document).on('click', '.ansBtn', function(event) {
         time = 10
         $("#scoreDiv").empty();
         $("#scoreDiv").append(score);
+        
     
         if (i === qlength){
          
          endAlert();
-         timer();
+        //  timer();
          
-        //  empty('#scoreDiv');
         }
         else {
             display();
-            timer();
+            // timer();
         }
         
     }
