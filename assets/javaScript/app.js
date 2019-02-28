@@ -6,6 +6,8 @@ var time = 10;
 var points= 0;
 // tells computer to start at [0] in object array.
 var i = 0;
+// timer variable
+var timer
 
 
 // Div where everything is displayed
@@ -138,14 +140,13 @@ $(document).on('click', '.ansBtn', function(event) {
     var userAns = this.value;
     var actualAns = question[i].validAnswer;
    
-    // var imageAns = validAnswer[0].imgSrc[0];
-// console logging to see user answer and actual answer. Making sure they match.
+    
     console.log (userAns);
     console.log(actualAns);
     
 // timer variable created
-    var timer = () =>{
-        setInterval(() =>{
+        clearInterval(timer);
+        timer = setInterval(() =>{
             // makes timer go backwards
             time--;
             $('#timerDiv').empty();
@@ -155,8 +156,6 @@ $(document).on('click', '.ansBtn', function(event) {
             console.log(time);
         },1000)
         
-    }
-    timer();
 
 // conditional statement 
 
@@ -169,7 +168,6 @@ $(document).on('click', '.ansBtn', function(event) {
         score++
         time = 10
         
-
         $("#scoreDiv").empty();
         $("#scoreDiv").append(score);
         if (i === qlength){
@@ -187,6 +185,7 @@ $(document).on('click', '.ansBtn', function(event) {
         alert('Boo!! You suck.')
         i++
         time = 10
+
         // empties the last scoreboard and reappends with the most current # of correct answers
         $("#scoreDiv").empty();
         $("#scoreDiv").append(score);
@@ -205,6 +204,8 @@ $(document).on('click', '.ansBtn', function(event) {
         }
         
     }
+    
+    
 });
 
 // End alert
@@ -232,6 +233,7 @@ reload.attr('class','btn btn-danger');
 reload.appendTo('#mainDiv');
 $(reload).on('click', reload, function(){
     location.reload(true);
+    
 })
 
 }
