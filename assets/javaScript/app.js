@@ -77,6 +77,7 @@ var question = [{
     imgSrc: "assets/images/brave.jpg"
     
     
+    
 },
 
 {
@@ -154,8 +155,18 @@ $(document).on('click', '.ansBtn', function(event) {
             
         
             console.log(time);
+            if (time===0) {
+                alert('times up, next question.')
+                i++
+                 time = 10
+                $('#timerDiv').empty();
+                $('#timeDiv').append(time);
+               
+                display()
+
+            }
         },1000)
-        
+            
 
 // conditional statement 
 
